@@ -8,6 +8,9 @@ obj/
 *.userosscache
 *.sln.docstates
 
+# DB Secrets
+db.config
+
 # Mono Auto Generated Files
 mono_crash.*
 
