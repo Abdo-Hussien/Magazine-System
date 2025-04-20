@@ -10,6 +10,7 @@ obj/
 
 # DB Secrets
 db.config
+TableCreations.sql
 
 # Mono Auto Generated Files
 mono_crash.*

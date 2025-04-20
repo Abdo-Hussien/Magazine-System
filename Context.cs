@@ -23,7 +23,6 @@ namespace Magazine_System
 
         public Context()
         {
-            CONNECTION_STR = GetConnectionString("MainDb");
             Connection = new OracleConnection(CONNECTION_STR);
         }
 
@@ -32,6 +31,12 @@ namespace Magazine_System
             var config = new ExeConfigurationFileMap();
             config.ExeConfigFilename = "db.config";
             Configuration cfg = ConfigurationManager.OpenMappedExeConfiguration(config, ConfigurationUserLevel.None);
+
+            foreach (ConnectionStringSettings cs in cfg.ConnectionStrings.ConnectionStrings)
+            {
+                Console.WriteLine($"Name: {cs.Name}, ConnectionString: {cs.ConnectionString}");
+            }
+
             return cfg.ConnectionStrings.ConnectionStrings[name].ConnectionString;
         }
 
