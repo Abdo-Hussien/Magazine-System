@@ -19,7 +19,10 @@ namespace Magazine_System
         private readonly string CONNECTION_STR = GetConnectionString("MainDb");
 
         private OracleConnection Connection { get; set; }
-        private OracleCommand Command { get; set; }
+        public OracleCommand Command { get; set; }
+
+        public OracleDataAdapter Adapter { get; set; }
+        public OracleCommandBuilder Builder { get; set; }
 
         public Context()
         {
@@ -80,7 +83,7 @@ namespace Magazine_System
             CreateCommand(Text, Parameters, CommandType.Text);
             try
             {
-               Command.ExecuteNonQuery();
+                Command.ExecuteNonQuery();
             }
             catch (OracleException ex)
             {
@@ -136,6 +139,18 @@ namespace Magazine_System
         //{
         //    OpenConnection();
         //}
+        public DataSet ExecuteDisconnectedMode(string Text, DataSet ds, List<OracleParameter> Parameters = null)
+        {
+            OpenConnection();
+            CreateCommand(Text, Parameters);
+            Adapter = new OracleDataAdapter(Command);
+            ds = new DataSet();
+            Adapter.Fill(ds);
+            CloseConnection();
+            return ds;
+        }
+
+
     }
     internal enum ExecuteMethod
     {
