@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using static System.Net.Mime.MediaTypeNames;
 using System.Windows.Forms;
 using System.Configuration;
-
 using System.Xml;
+using Magazine_System.ErrorHandler;
 
 namespace Magazine_System
 {
@@ -52,12 +51,11 @@ namespace Magazine_System
             }
             catch (OracleException ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
-                return;
+                throw new DatabaseException(ex.Message);
             }
         }
 
-        private void CloseConnection()
+        public void CloseConnection()
         {
             if (Connection != null && Connection.State == ConnectionState.Open)
             {
@@ -114,31 +112,22 @@ namespace Magazine_System
             }
         }
 
-        public void ExecuteSelect(string Text, ComboBox Component, List<OracleParameter> Parameters = null)
+        public OracleDataReader ExecuteSelect(string Text, List<OracleParameter> Parameters = null)
         {
             OpenConnection();
             CreateCommand(Text, Parameters, CommandType.Text);
             try
             {
                 OracleDataReader dr = Command.ExecuteReader();
-                while (dr.Read())
-                {
-                    Component.Items.Add(dr[0]);
-                }
+                return dr;
             }
             catch (OracleException ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                CloseConnection();
+                return null;
             }
         }
-        //public T Execute<T>()
-        //{
-        //    OpenConnection();
-        //}
+        
         public DataSet ExecuteDisconnectedMode(string Text, DataSet ds, List<OracleParameter> Parameters = null)
         {
             OpenConnection();

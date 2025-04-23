@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.FormTabControl = new System.Windows.Forms.TabControl();
             this.AuthTab = new System.Windows.Forms.TabPage();
             this.LogInPanel = new System.Windows.Forms.Panel();
             this.GoToSignUp = new System.Windows.Forms.Label();
@@ -52,40 +52,42 @@
             this.PasswordBoxSignUp = new System.Windows.Forms.TextBox();
             this.EmailBoxSignUp = new System.Windows.Forms.TextBox();
             this.DashboardTab = new System.Windows.Forms.TabPage();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.AdminTab = new System.Windows.Forms.TabPage();
-            this.UsersGrid = new System.Windows.Forms.DataGridView();
-            this.ApplyUsersBtnAdmin = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.ApplyMagazinesBtnAdmin = new System.Windows.Forms.Button();
             this.MagazinesGrid = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.ApplyUsersBtnAdmin = new System.Windows.Forms.Button();
+            this.UsersGrid = new System.Windows.Forms.DataGridView();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.LogOutBtn = new System.Windows.Forms.Button();
+            this.FormTabControl.SuspendLayout();
             this.AuthTab.SuspendLayout();
             this.LogInPanel.SuspendLayout();
             this.SignUpPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.AdminTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGrid)).BeginInit();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MagazinesGrid)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // FormTabControl
             // 
-            this.tabControl1.Controls.Add(this.AuthTab);
-            this.tabControl1.Controls.Add(this.DashboardTab);
-            this.tabControl1.Controls.Add(this.AdminTab);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1096, 503);
-            this.tabControl1.TabIndex = 0;
+            this.FormTabControl.Controls.Add(this.AuthTab);
+            this.FormTabControl.Controls.Add(this.DashboardTab);
+            this.FormTabControl.Controls.Add(this.AdminTab);
+            this.FormTabControl.Location = new System.Drawing.Point(12, 12);
+            this.FormTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormTabControl.Name = "FormTabControl";
+            this.FormTabControl.SelectedIndex = 0;
+            this.FormTabControl.Size = new System.Drawing.Size(1096, 503);
+            this.FormTabControl.TabIndex = 0;
+            this.FormTabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.FormTabControl_Selecting);
             // 
             // AuthTab
             // 
@@ -102,6 +104,7 @@
             // 
             // LogInPanel
             // 
+            this.LogInPanel.Controls.Add(this.LogOutBtn);
             this.LogInPanel.Controls.Add(this.GoToSignUp);
             this.LogInPanel.Controls.Add(this.label7);
             this.LogInPanel.Controls.Add(this.LogInBtn);
@@ -109,7 +112,7 @@
             this.LogInPanel.Controls.Add(this.label10);
             this.LogInPanel.Controls.Add(this.EmailBoxLogIn);
             this.LogInPanel.Controls.Add(this.PasswordBoxLogIn);
-            this.LogInPanel.Location = new System.Drawing.Point(13, 18);
+            this.LogInPanel.Location = new System.Drawing.Point(13, 20);
             this.LogInPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LogInPanel.Name = "LogInPanel";
             this.LogInPanel.Size = new System.Drawing.Size(351, 322);
@@ -143,7 +146,7 @@
             this.LogInBtn.Location = new System.Drawing.Point(11, 140);
             this.LogInBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LogInBtn.Name = "LogInBtn";
-            this.LogInBtn.Size = new System.Drawing.Size(329, 78);
+            this.LogInBtn.Size = new System.Drawing.Size(153, 78);
             this.LogInBtn.TabIndex = 6;
             this.LogInBtn.Text = "Log In";
             this.LogInBtn.UseVisualStyleBackColor = false;
@@ -186,6 +189,7 @@
             this.PasswordBoxLogIn.Name = "PasswordBoxLogIn";
             this.PasswordBoxLogIn.Size = new System.Drawing.Size(329, 22);
             this.PasswordBoxLogIn.TabIndex = 4;
+            this.PasswordBoxLogIn.UseSystemPasswordChar = true;
             // 
             // SignUpPanel
             // 
@@ -313,6 +317,7 @@
             this.PasswordBoxSignUp.Name = "PasswordBoxSignUp";
             this.PasswordBoxSignUp.Size = new System.Drawing.Size(193, 22);
             this.PasswordBoxSignUp.TabIndex = 1;
+            this.PasswordBoxSignUp.UseSystemPasswordChar = true;
             // 
             // EmailBoxSignUp
             // 
@@ -343,53 +348,32 @@
             this.AdminTab.Size = new System.Drawing.Size(1088, 474);
             this.AdminTab.TabIndex = 2;
             this.AdminTab.Text = "Admin";
-            this.AdminTab.Click += new System.EventHandler(this.AdminTab_Click);
-            // 
-            // UsersGrid
-            // 
-            this.UsersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UsersGrid.Location = new System.Drawing.Point(12, 33);
-            this.UsersGrid.Name = "UsersGrid";
-            this.UsersGrid.RowHeadersWidth = 51;
-            this.UsersGrid.RowTemplate.Height = 24;
-            this.UsersGrid.Size = new System.Drawing.Size(455, 317);
-            this.UsersGrid.TabIndex = 0;
-            // 
-            // ApplyUsersBtnAdmin
-            // 
-            this.ApplyUsersBtnAdmin.Location = new System.Drawing.Point(12, 356);
-            this.ApplyUsersBtnAdmin.Name = "ApplyUsersBtnAdmin";
-            this.ApplyUsersBtnAdmin.Size = new System.Drawing.Size(151, 37);
-            this.ApplyUsersBtnAdmin.TabIndex = 1;
-            this.ApplyUsersBtnAdmin.Text = "Save Changes";
-            this.ApplyUsersBtnAdmin.UseVisualStyleBackColor = true;
-            this.ApplyUsersBtnAdmin.Click += new System.EventHandler(this.ApplyUsersBtnAdmin_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.ApplyUsersBtnAdmin);
-            this.panel1.Controls.Add(this.UsersGrid);
-            this.panel1.Location = new System.Drawing.Point(13, 15);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(479, 406);
-            this.panel1.TabIndex = 2;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.ApplyMagazinesBtnAdmin);
             this.panel2.Controls.Add(this.MagazinesGrid);
-            this.panel2.Location = new System.Drawing.Point(577, 15);
+            this.panel2.Location = new System.Drawing.Point(593, 15);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(479, 406);
             this.panel2.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(8, 6);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(151, 20);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Magazines Table";
             // 
             // ApplyMagazinesBtnAdmin
             // 
             this.ApplyMagazinesBtnAdmin.Location = new System.Drawing.Point(12, 356);
             this.ApplyMagazinesBtnAdmin.Name = "ApplyMagazinesBtnAdmin";
-            this.ApplyMagazinesBtnAdmin.Size = new System.Drawing.Size(151, 37);
+            this.ApplyMagazinesBtnAdmin.Size = new System.Drawing.Size(455, 37);
             this.ApplyMagazinesBtnAdmin.TabIndex = 1;
             this.ApplyMagazinesBtnAdmin.Text = "Save Changes";
             this.ApplyMagazinesBtnAdmin.UseVisualStyleBackColor = true;
@@ -405,6 +389,16 @@
             this.MagazinesGrid.Size = new System.Drawing.Size(455, 317);
             this.MagazinesGrid.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.ApplyUsersBtnAdmin);
+            this.panel1.Controls.Add(this.UsersGrid);
+            this.panel1.Location = new System.Drawing.Point(13, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(479, 406);
+            this.panel1.TabIndex = 2;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -415,15 +409,37 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Users Table";
             // 
-            // label9
+            // ApplyUsersBtnAdmin
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(151, 20);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Magazines Table";
+            this.ApplyUsersBtnAdmin.Location = new System.Drawing.Point(12, 356);
+            this.ApplyUsersBtnAdmin.Name = "ApplyUsersBtnAdmin";
+            this.ApplyUsersBtnAdmin.Size = new System.Drawing.Size(455, 37);
+            this.ApplyUsersBtnAdmin.TabIndex = 1;
+            this.ApplyUsersBtnAdmin.Text = "Save Changes";
+            this.ApplyUsersBtnAdmin.UseVisualStyleBackColor = true;
+            this.ApplyUsersBtnAdmin.Click += new System.EventHandler(this.ApplyUsersBtnAdmin_Click);
+            // 
+            // UsersGrid
+            // 
+            this.UsersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UsersGrid.Location = new System.Drawing.Point(12, 33);
+            this.UsersGrid.Name = "UsersGrid";
+            this.UsersGrid.RowHeadersWidth = 51;
+            this.UsersGrid.RowTemplate.Height = 24;
+            this.UsersGrid.Size = new System.Drawing.Size(455, 317);
+            this.UsersGrid.TabIndex = 0;
+            // 
+            // LogOutBtn
+            // 
+            this.LogOutBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.LogOutBtn.Location = new System.Drawing.Point(187, 140);
+            this.LogOutBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LogOutBtn.Name = "LogOutBtn";
+            this.LogOutBtn.Size = new System.Drawing.Size(153, 78);
+            this.LogOutBtn.TabIndex = 9;
+            this.LogOutBtn.Text = "Log Out";
+            this.LogOutBtn.UseVisualStyleBackColor = false;
+            this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
             // 
             // Mag_Store_App
             // 
@@ -431,32 +447,32 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1120, 527);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.FormTabControl);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Mag_Store_App";
             this.Text = "Mag Store";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.FormTabControl.ResumeLayout(false);
             this.AuthTab.ResumeLayout(false);
             this.LogInPanel.ResumeLayout(false);
             this.LogInPanel.PerformLayout();
             this.SignUpPanel.ResumeLayout(false);
             this.SignUpPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.AdminTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGrid)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MagazinesGrid)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl FormTabControl;
         private System.Windows.Forms.TabPage AuthTab;
         private System.Windows.Forms.TabPage DashboardTab;
         private System.Windows.Forms.Label label1;
@@ -490,6 +506,7 @@
         private System.Windows.Forms.DataGridView MagazinesGrid;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button LogOutBtn;
     }
 }
 
