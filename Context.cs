@@ -12,22 +12,18 @@ using Magazine_System.ErrorHandler;
 
 namespace Magazine_System
 {
-    internal class Context
+    internal static class Context
     {
 
-        private readonly string CONNECTION_STR = GetConnectionString("MainDb");
+        private readonly static string CONNECTION_STR = GetConnectionString("MainDb");
 
-        private OracleConnection Connection { get; set; }
-        public OracleCommand Command { get; set; }
+        private static OracleConnection Connection { get; set; } = new OracleConnection(CONNECTION_STR);
+        public static OracleCommand Command { get; set; }
 
-        public OracleDataAdapter Adapter { get; set; }
-        public OracleCommandBuilder Builder { get; set; }
+        public static OracleDataAdapter Adapter { get; set; }
+        public static OracleCommandBuilder Builder { get; set; }
 
-        public Context()
-        {
-            Connection = new OracleConnection(CONNECTION_STR);
-        }
-
+        
         private static string GetConnectionString(string name)
         {
             var config = new ExeConfigurationFileMap();
@@ -43,7 +39,7 @@ namespace Magazine_System
         }
 
 
-        private void OpenConnection()
+        private static void OpenConnection()
         {
             try
             {
@@ -55,7 +51,7 @@ namespace Magazine_System
             }
         }
 
-        public void CloseConnection()
+        public static void CloseConnection()
         {
             if (Connection != null && Connection.State == ConnectionState.Open)
             {
@@ -63,7 +59,7 @@ namespace Magazine_System
             }
         }
 
-        private void CreateCommand(string Text, List<OracleParameter> Parameters = null, CommandType Type = CommandType.Text)
+        private static void CreateCommand(string Text, List<OracleParameter> Parameters = null, CommandType Type = CommandType.Text)
         {
             Command = new OracleCommand(Text, Connection);
             Command.CommandType = Type;
@@ -75,7 +71,7 @@ namespace Magazine_System
                 }
             }
         }
-        public void ExecuteCrud(string Text, List<OracleParameter> Parameters = null)
+        public static void ExecuteCrud(string Text, List<OracleParameter> Parameters = null)
         {
             OpenConnection();
             CreateCommand(Text, Parameters, CommandType.Text);
@@ -93,7 +89,7 @@ namespace Magazine_System
             }
         }
 
-        public object ExecuteScalar(string text, List<OracleParameter> parameters = null)
+        public static object ExecuteScalar(string text, List<OracleParameter> parameters = null)
         {
             OpenConnection();
             CreateCommand(text, parameters, CommandType.Text);
@@ -112,7 +108,8 @@ namespace Magazine_System
             }
         }
 
-        public OracleDataReader ExecuteSelect(string Text, List<OracleParameter> Parameters = null)
+        // Doesn't close the connection
+        public static OracleDataReader ExecuteSelect(string Text, List<OracleParameter> Parameters = null)
         {
             OpenConnection();
             CreateCommand(Text, Parameters, CommandType.Text);
@@ -128,7 +125,7 @@ namespace Magazine_System
             }
         }
         
-        public DataSet ExecuteDisconnectedMode(string Text, DataSet ds, List<OracleParameter> Parameters = null)
+        public static DataSet ExecuteDisconnectedMode(string Text, DataSet ds, List<OracleParameter> Parameters = null)
         {
             OpenConnection();
             CreateCommand(Text, Parameters);
@@ -141,10 +138,10 @@ namespace Magazine_System
 
 
     }
-    internal enum ExecuteMethod
-    {
-        ExecuteNonQuery,
-        ExecuteScalar,
-        ExecuteReader
-    }
+    //internal enum ExecuteMethod
+    //{
+    //    ExecuteNonQuery,
+    //    ExecuteScalar,
+    //    ExecuteReader
+    //}
 }

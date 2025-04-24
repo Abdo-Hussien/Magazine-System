@@ -8,8 +8,8 @@ namespace Magazine_System
 {
     internal static class SessionStorage
     {
+        public static User CurrentUser;
         public static string AuthToken = string.Empty;
-        public static string Username { get; set; }
         public static void SetToken()
         {
             AuthToken = Guid.NewGuid().ToString();
@@ -18,7 +18,7 @@ namespace Magazine_System
         public static void DeleteCreds()
         {
             AuthToken = string.Empty;
-            Username = string.Empty;
+            CurrentUser = null;
         }
     }
 }
