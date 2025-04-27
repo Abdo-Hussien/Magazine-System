@@ -1,6 +1,7 @@
 ﻿using Oracle.DataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,7 @@ namespace Magazine_System
     {
         private void InitProfileEvents()
         {
-            OpenUpdateProfileBtn.Click += OpenUpdateProfileBtn_Click;
-            UpdateProfileBtn.Click += UpdateProfileBtn_Click;
-            DiscardUpdateProfileBtn.Click += DiscardUpdateProfileBtn_Click;
+
         }
 
         private void OpenUpdateProfileBtn_Click(object sender, EventArgs e)
@@ -59,6 +58,38 @@ namespace Magazine_System
             MessageBox.Show("Profile updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void LogOutBtn_Click(object sender, EventArgs e)
+        {
+            LogInBtn.Size = new Size(249, LogInBtn.Size.Height);
+
+            LogOutBtn.Hide();
+            FormTabControl.TabPages.Insert(1, AuthTab);
+            FormTabControl.TabPages.Remove(ProfileTab);
+            FormTabControl.TabPages.Remove(AdminTab);
+            ActiveForm.Text = "Mag Store";
+            SessionStorage.DeleteCreds();
+            MessageBox.Show("Logged out successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        public void SetUserProfileValues()
+        {
+
+            usernameValue.Text = SessionStorage.CurrentUser.Name;
+            emailValue.Text = SessionStorage.CurrentUser.Email;
+            passwordValue.Text = new string('•', SessionStorage.CurrentUser.Password.Length);
+            genderValue.Text = SessionStorage.CurrentUser.Gender.Trim() == "M" ? "Male" : "Female";
+            CreatedAtValue.Text = SessionStorage.CurrentUser.CreatedAt.ToString("f");
+            UpdatedAtValue.Text = SessionStorage.CurrentUser.UpdatedAt.ToString("f");
+
+            UsernameBoxProfile.Text = SessionStorage.CurrentUser.Name;
+            EmailBoxProfile.Text = SessionStorage.CurrentUser.Email;
+            PasswordBoxProfile.Text = SessionStorage.CurrentUser.Password;
+            if (SessionStorage.CurrentUser.Gender.Trim() == "M")
+                GenderComboProfile.SelectedIndex = 0;
+            else
+                GenderComboProfile.SelectedIndex = 1;
+        }
     }
 }
 

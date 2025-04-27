@@ -63,6 +63,7 @@
             this.OpenUpdateProfileBtn = new System.Windows.Forms.Button();
             this.AuthTab = new System.Windows.Forms.TabPage();
             this.LogInPanel = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.LogOutBtn = new System.Windows.Forms.Button();
             this.GoToSignUp = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -72,6 +73,7 @@
             this.EmailBoxLogIn = new System.Windows.Forms.TextBox();
             this.PasswordBoxLogIn = new System.Windows.Forms.TextBox();
             this.SignUpPanel = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.GenderComboSignUp = new System.Windows.Forms.ComboBox();
             this.GoToLogIn = new System.Windows.Forms.Label();
@@ -83,15 +85,38 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PasswordBoxSignUp = new System.Windows.Forms.TextBox();
             this.EmailBoxSignUp = new System.Windows.Forms.TextBox();
-            this.DashboardTab = new System.Windows.Forms.TabPage();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.HomeTab = new System.Windows.Forms.TabPage();
+            this.SubscriptionReportsBtn = new System.Windows.Forms.Button();
+            this.NextBtn = new System.Windows.Forms.Button();
+            this.PreviousBtn = new System.Windows.Forms.Button();
+            this.MagazineOverviewPanel = new System.Windows.Forms.Panel();
+            this.MagazineUrlImage = new System.Windows.Forms.PictureBox();
+            this.ChooseBtn = new System.Windows.Forms.Button();
+            this.MagazineCreatedAtLabel = new System.Windows.Forms.Label();
+            this.MagazineCategoryLabel = new System.Windows.Forms.Label();
+            this.MagazinePriceLabel = new System.Windows.Forms.Label();
+            this.MagazineTitleLabel = new System.Windows.Forms.Label();
+            this.Divider = new System.Windows.Forms.Panel();
+            this.HeaderLabelHome = new System.Windows.Forms.Label();
             this.AdminTab = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.magTitleFilteringPanel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.magazineFilteringField = new System.Windows.Forms.TextBox();
+            this.usernameFilteringPanel = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.usernameFilteringField = new System.Windows.Forms.TextBox();
+            this.OpenReportsFormBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.LoadMagazinesAdmin = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.ApplyMagazinesBtnAdmin = new System.Windows.Forms.Button();
             this.MagazinesGrid = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LoadUsersAdmin = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.ApplyUsersBtnAdmin = new System.Windows.Forms.Button();
             this.UsersGrid = new System.Windows.Forms.DataGridView();
@@ -108,8 +133,12 @@
             this.AuthTab.SuspendLayout();
             this.LogInPanel.SuspendLayout();
             this.SignUpPanel.SuspendLayout();
-            this.DashboardTab.SuspendLayout();
+            this.HomeTab.SuspendLayout();
+            this.MagazineOverviewPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MagazineUrlImage)).BeginInit();
             this.AdminTab.SuspendLayout();
+            this.magTitleFilteringPanel.SuspendLayout();
+            this.usernameFilteringPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MagazinesGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -121,7 +150,7 @@
             // 
             this.FormTabControl.Controls.Add(this.ProfileTab);
             this.FormTabControl.Controls.Add(this.AuthTab);
-            this.FormTabControl.Controls.Add(this.DashboardTab);
+            this.FormTabControl.Controls.Add(this.HomeTab);
             this.FormTabControl.Controls.Add(this.AdminTab);
             this.FormTabControl.Location = new System.Drawing.Point(12, 12);
             this.FormTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -499,6 +528,7 @@
             // 
             // LogInPanel
             // 
+            this.LogInPanel.Controls.Add(this.label12);
             this.LogInPanel.Controls.Add(this.LogOutBtn);
             this.LogInPanel.Controls.Add(this.GoToSignUp);
             this.LogInPanel.Controls.Add(this.label7);
@@ -513,6 +543,20 @@
             this.LogInPanel.Size = new System.Drawing.Size(351, 322);
             this.LogInPanel.TabIndex = 10;
             this.LogInPanel.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label12.Location = new System.Drawing.Point(228, 288);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 16);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Sign Up";
+            this.label12.Click += new System.EventHandler(this.GoToSignUp_Click);
             // 
             // LogOutBtn
             // 
@@ -531,11 +575,11 @@
             this.GoToSignUp.AutoSize = true;
             this.GoToSignUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.GoToSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.GoToSignUp.Location = new System.Drawing.Point(73, 288);
+            this.GoToSignUp.Location = new System.Drawing.Point(68, 288);
             this.GoToSignUp.Name = "GoToSignUp";
-            this.GoToSignUp.Size = new System.Drawing.Size(200, 16);
+            this.GoToSignUp.Size = new System.Drawing.Size(149, 16);
             this.GoToSignUp.TabIndex = 8;
-            this.GoToSignUp.Text = "Don\'t Have an account? Sign Up";
+            this.GoToSignUp.Text = "Don\'t Have an account?";
             this.GoToSignUp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.GoToSignUp.Click += new System.EventHandler(this.GoToSignUp_Click);
             // 
@@ -601,6 +645,7 @@
             // 
             // SignUpPanel
             // 
+            this.SignUpPanel.Controls.Add(this.label14);
             this.SignUpPanel.Controls.Add(this.label5);
             this.SignUpPanel.Controls.Add(this.GenderComboSignUp);
             this.SignUpPanel.Controls.Add(this.GoToLogIn);
@@ -617,6 +662,20 @@
             this.SignUpPanel.Name = "SignUpPanel";
             this.SignUpPanel.Size = new System.Drawing.Size(351, 322);
             this.SignUpPanel.TabIndex = 9;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label14.Location = new System.Drawing.Point(215, 288);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(43, 16);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Log In";
+            this.label14.Click += new System.EventHandler(this.GoToLogIn_Click);
             // 
             // label5
             // 
@@ -648,11 +707,11 @@
             this.GoToLogIn.AutoSize = true;
             this.GoToLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.GoToLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.GoToLogIn.Location = new System.Drawing.Point(94, 288);
+            this.GoToLogIn.Location = new System.Drawing.Point(89, 288);
             this.GoToLogIn.Name = "GoToLogIn";
-            this.GoToLogIn.Size = new System.Drawing.Size(154, 16);
+            this.GoToLogIn.Size = new System.Drawing.Size(115, 16);
             this.GoToLogIn.TabIndex = 8;
-            this.GoToLogIn.Text = "Have an account? Log In";
+            this.GoToLogIn.Text = "Have an account?";
             this.GoToLogIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.GoToLogIn.Click += new System.EventHandler(this.GoToLogIn_Click);
             // 
@@ -735,41 +794,156 @@
             this.EmailBoxSignUp.Size = new System.Drawing.Size(196, 22);
             this.EmailBoxSignUp.TabIndex = 0;
             // 
-            // DashboardTab
+            // HomeTab
             // 
-            this.DashboardTab.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DashboardTab.Controls.Add(this.panel5);
-            this.DashboardTab.Controls.Add(this.label12);
-            this.DashboardTab.Location = new System.Drawing.Point(4, 25);
-            this.DashboardTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DashboardTab.Name = "DashboardTab";
-            this.DashboardTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DashboardTab.Size = new System.Drawing.Size(1088, 474);
-            this.DashboardTab.TabIndex = 1;
-            this.DashboardTab.Text = "Home";
+            this.HomeTab.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.HomeTab.Controls.Add(this.SubscriptionReportsBtn);
+            this.HomeTab.Controls.Add(this.NextBtn);
+            this.HomeTab.Controls.Add(this.PreviousBtn);
+            this.HomeTab.Controls.Add(this.MagazineOverviewPanel);
+            this.HomeTab.Controls.Add(this.Divider);
+            this.HomeTab.Controls.Add(this.HeaderLabelHome);
+            this.HomeTab.Location = new System.Drawing.Point(4, 25);
+            this.HomeTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.HomeTab.Name = "HomeTab";
+            this.HomeTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.HomeTab.Size = new System.Drawing.Size(1088, 474);
+            this.HomeTab.TabIndex = 1;
+            this.HomeTab.Text = "Home";
             // 
-            // panel5
+            // SubscriptionReportsBtn
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel5.Location = new System.Drawing.Point(1, 41);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1100, 1);
-            this.panel5.TabIndex = 1;
+            this.SubscriptionReportsBtn.Location = new System.Drawing.Point(877, 5);
+            this.SubscriptionReportsBtn.Name = "SubscriptionReportsBtn";
+            this.SubscriptionReportsBtn.Size = new System.Drawing.Size(205, 44);
+            this.SubscriptionReportsBtn.TabIndex = 5;
+            this.SubscriptionReportsBtn.Text = "Running Subscriptions..";
+            this.SubscriptionReportsBtn.UseVisualStyleBackColor = true;
+            this.SubscriptionReportsBtn.Click += new System.EventHandler(this.SubscriptionReportsBtn_Click);
             // 
-            // label12
+            // NextBtn
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 12);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(147, 16);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Welcome to Mag Store!";
+            this.NextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.NextBtn.ForeColor = System.Drawing.SystemColors.Control;
+            this.NextBtn.Location = new System.Drawing.Point(994, 206);
+            this.NextBtn.Name = "NextBtn";
+            this.NextBtn.Size = new System.Drawing.Size(75, 64);
+            this.NextBtn.TabIndex = 3;
+            this.NextBtn.Text = "Next";
+            this.NextBtn.UseVisualStyleBackColor = false;
+            this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
+            // 
+            // PreviousBtn
+            // 
+            this.PreviousBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.PreviousBtn.ForeColor = System.Drawing.SystemColors.Control;
+            this.PreviousBtn.Location = new System.Drawing.Point(16, 206);
+            this.PreviousBtn.Name = "PreviousBtn";
+            this.PreviousBtn.Size = new System.Drawing.Size(86, 64);
+            this.PreviousBtn.TabIndex = 1;
+            this.PreviousBtn.Text = "Previous";
+            this.PreviousBtn.UseVisualStyleBackColor = false;
+            this.PreviousBtn.Click += new System.EventHandler(this.PreviousBtn_Click);
+            // 
+            // MagazineOverviewPanel
+            // 
+            this.MagazineOverviewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MagazineOverviewPanel.Controls.Add(this.MagazineUrlImage);
+            this.MagazineOverviewPanel.Controls.Add(this.ChooseBtn);
+            this.MagazineOverviewPanel.Controls.Add(this.MagazineCreatedAtLabel);
+            this.MagazineOverviewPanel.Controls.Add(this.MagazineCategoryLabel);
+            this.MagazineOverviewPanel.Controls.Add(this.MagazinePriceLabel);
+            this.MagazineOverviewPanel.Controls.Add(this.MagazineTitleLabel);
+            this.MagazineOverviewPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(42)))));
+            this.MagazineOverviewPanel.Location = new System.Drawing.Point(415, 93);
+            this.MagazineOverviewPanel.Name = "MagazineOverviewPanel";
+            this.MagazineOverviewPanel.Size = new System.Drawing.Size(241, 324);
+            this.MagazineOverviewPanel.TabIndex = 2;
+            // 
+            // MagazineUrlImage
+            // 
+            this.MagazineUrlImage.Location = new System.Drawing.Point(13, 13);
+            this.MagazineUrlImage.Name = "MagazineUrlImage";
+            this.MagazineUrlImage.Size = new System.Drawing.Size(214, 124);
+            this.MagazineUrlImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.MagazineUrlImage.TabIndex = 4;
+            this.MagazineUrlImage.TabStop = false;
+            this.MagazineUrlImage.WaitOnLoad = true;
+            // 
+            // ChooseBtn
+            // 
+            this.ChooseBtn.Location = new System.Drawing.Point(13, 274);
+            this.ChooseBtn.Name = "ChooseBtn";
+            this.ChooseBtn.Size = new System.Drawing.Size(214, 36);
+            this.ChooseBtn.TabIndex = 2;
+            this.ChooseBtn.Text = "Subscribe";
+            this.ChooseBtn.UseVisualStyleBackColor = true;
+            this.ChooseBtn.Click += new System.EventHandler(this.ChooseBtn_Click);
+            // 
+            // MagazineCreatedAtLabel
+            // 
+            this.MagazineCreatedAtLabel.AutoSize = true;
+            this.MagazineCreatedAtLabel.Location = new System.Drawing.Point(12, 246);
+            this.MagazineCreatedAtLabel.Name = "MagazineCreatedAtLabel";
+            this.MagazineCreatedAtLabel.Size = new System.Drawing.Size(134, 16);
+            this.MagazineCreatedAtLabel.TabIndex = 3;
+            this.MagazineCreatedAtLabel.Text = "(MagazineCreatedAt)";
+            // 
+            // MagazineCategoryLabel
+            // 
+            this.MagazineCategoryLabel.AutoSize = true;
+            this.MagazineCategoryLabel.Location = new System.Drawing.Point(12, 173);
+            this.MagazineCategoryLabel.Name = "MagazineCategoryLabel";
+            this.MagazineCategoryLabel.Size = new System.Drawing.Size(129, 16);
+            this.MagazineCategoryLabel.TabIndex = 2;
+            this.MagazineCategoryLabel.Text = "(MagazineCategory)";
+            // 
+            // MagazinePriceLabel
+            // 
+            this.MagazinePriceLabel.AutoSize = true;
+            this.MagazinePriceLabel.Location = new System.Drawing.Point(12, 214);
+            this.MagazinePriceLabel.Name = "MagazinePriceLabel";
+            this.MagazinePriceLabel.Size = new System.Drawing.Size(105, 16);
+            this.MagazinePriceLabel.TabIndex = 1;
+            this.MagazinePriceLabel.Text = "(MagazinePrice)";
+            // 
+            // MagazineTitleLabel
+            // 
+            this.MagazineTitleLabel.AutoSize = true;
+            this.MagazineTitleLabel.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MagazineTitleLabel.Location = new System.Drawing.Point(10, 151);
+            this.MagazineTitleLabel.Name = "MagazineTitleLabel";
+            this.MagazineTitleLabel.Size = new System.Drawing.Size(136, 18);
+            this.MagazineTitleLabel.TabIndex = 0;
+            this.MagazineTitleLabel.Text = "(MagazineTitle)";
+            // 
+            // Divider
+            // 
+            this.Divider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Divider.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Divider.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Divider.Location = new System.Drawing.Point(1, 53);
+            this.Divider.Name = "Divider";
+            this.Divider.Size = new System.Drawing.Size(1100, 1);
+            this.Divider.TabIndex = 1;
+            // 
+            // HeaderLabelHome
+            // 
+            this.HeaderLabelHome.AutoSize = true;
+            this.HeaderLabelHome.Location = new System.Drawing.Point(13, 19);
+            this.HeaderLabelHome.Name = "HeaderLabelHome";
+            this.HeaderLabelHome.Size = new System.Drawing.Size(147, 16);
+            this.HeaderLabelHome.TabIndex = 0;
+            this.HeaderLabelHome.Text = "Welcome to Mag Store!";
             // 
             // AdminTab
             // 
             this.AdminTab.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AdminTab.Controls.Add(this.panel7);
+            this.AdminTab.Controls.Add(this.label20);
+            this.AdminTab.Controls.Add(this.magTitleFilteringPanel);
+            this.AdminTab.Controls.Add(this.usernameFilteringPanel);
+            this.AdminTab.Controls.Add(this.OpenReportsFormBtn);
             this.AdminTab.Controls.Add(this.panel2);
             this.AdminTab.Controls.Add(this.panel1);
             this.AdminTab.Location = new System.Drawing.Point(4, 25);
@@ -778,31 +952,145 @@
             this.AdminTab.TabIndex = 2;
             this.AdminTab.Text = "Admin";
             // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel7.Location = new System.Drawing.Point(3, 36);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1100, 1);
+            this.panel7.TabIndex = 10;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(3, 15);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(58, 16);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Filter By:";
+            // 
+            // magTitleFilteringPanel
+            // 
+            this.magTitleFilteringPanel.AutoSize = true;
+            this.magTitleFilteringPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.magTitleFilteringPanel.Controls.Add(this.panel5);
+            this.magTitleFilteringPanel.Controls.Add(this.label16);
+            this.magTitleFilteringPanel.Controls.Add(this.magazineFilteringField);
+            this.magTitleFilteringPanel.Location = new System.Drawing.Point(626, 50);
+            this.magTitleFilteringPanel.Name = "magTitleFilteringPanel";
+            this.magTitleFilteringPanel.Size = new System.Drawing.Size(449, 31);
+            this.magTitleFilteringPanel.TabIndex = 8;
+            // 
+            // panel5
+            // 
+            this.panel5.AutoSize = true;
+            this.panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel5.Location = new System.Drawing.Point(8, 8);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(0, 0);
+            this.panel5.TabIndex = 5;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 6);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(95, 16);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Magazine Title";
+            // 
+            // magazineFilteringField
+            // 
+            this.magazineFilteringField.Location = new System.Drawing.Point(109, 6);
+            this.magazineFilteringField.Name = "magazineFilteringField";
+            this.magazineFilteringField.Size = new System.Drawing.Size(337, 22);
+            this.magazineFilteringField.TabIndex = 2;
+            // 
+            // usernameFilteringPanel
+            // 
+            this.usernameFilteringPanel.AutoSize = true;
+            this.usernameFilteringPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.usernameFilteringPanel.Controls.Add(this.panel6);
+            this.usernameFilteringPanel.Controls.Add(this.label18);
+            this.usernameFilteringPanel.Controls.Add(this.usernameFilteringField);
+            this.usernameFilteringPanel.Location = new System.Drawing.Point(15, 50);
+            this.usernameFilteringPanel.Name = "usernameFilteringPanel";
+            this.usernameFilteringPanel.Size = new System.Drawing.Size(450, 31);
+            this.usernameFilteringPanel.TabIndex = 7;
+            // 
+            // panel6
+            // 
+            this.panel6.AutoSize = true;
+            this.panel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel6.Location = new System.Drawing.Point(8, 8);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(0, 0);
+            this.panel6.TabIndex = 5;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(8, 6);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(70, 16);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Username";
+            // 
+            // usernameFilteringField
+            // 
+            this.usernameFilteringField.Location = new System.Drawing.Point(84, 6);
+            this.usernameFilteringField.Name = "usernameFilteringField";
+            this.usernameFilteringField.Size = new System.Drawing.Size(363, 22);
+            this.usernameFilteringField.TabIndex = 2;
+            // 
+            // OpenReportsFormBtn
+            // 
+            this.OpenReportsFormBtn.Location = new System.Drawing.Point(487, 50);
+            this.OpenReportsFormBtn.Name = "OpenReportsFormBtn";
+            this.OpenReportsFormBtn.Size = new System.Drawing.Size(119, 44);
+            this.OpenReportsFormBtn.TabIndex = 4;
+            this.OpenReportsFormBtn.Text = "Generate Reports...";
+            this.OpenReportsFormBtn.UseVisualStyleBackColor = true;
+            this.OpenReportsFormBtn.Click += new System.EventHandler(this.OpenReportsFormBtn_Click);
+            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.LoadMagazinesAdmin);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.ApplyMagazinesBtnAdmin);
             this.panel2.Controls.Add(this.MagazinesGrid);
-            this.panel2.Location = new System.Drawing.Point(593, 15);
+            this.panel2.Location = new System.Drawing.Point(626, 93);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(479, 406);
+            this.panel2.Size = new System.Drawing.Size(446, 363);
             this.panel2.TabIndex = 3;
+            // 
+            // LoadMagazinesAdmin
+            // 
+            this.LoadMagazinesAdmin.Location = new System.Drawing.Point(234, 326);
+            this.LoadMagazinesAdmin.Name = "LoadMagazinesAdmin";
+            this.LoadMagazinesAdmin.Size = new System.Drawing.Size(212, 37);
+            this.LoadMagazinesAdmin.TabIndex = 4;
+            this.LoadMagazinesAdmin.Text = "Load Magazines";
+            this.LoadMagazinesAdmin.UseVisualStyleBackColor = true;
+            this.LoadMagazinesAdmin.Click += new System.EventHandler(this.LoadMagazinesAdmin_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 6);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.label9.Location = new System.Drawing.Point(-3, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(151, 20);
+            this.label9.Size = new System.Drawing.Size(112, 16);
             this.label9.TabIndex = 3;
             this.label9.Text = "Magazines Table";
             // 
             // ApplyMagazinesBtnAdmin
             // 
-            this.ApplyMagazinesBtnAdmin.Location = new System.Drawing.Point(12, 356);
+            this.ApplyMagazinesBtnAdmin.Location = new System.Drawing.Point(0, 326);
             this.ApplyMagazinesBtnAdmin.Name = "ApplyMagazinesBtnAdmin";
-            this.ApplyMagazinesBtnAdmin.Size = new System.Drawing.Size(455, 37);
+            this.ApplyMagazinesBtnAdmin.Size = new System.Drawing.Size(228, 37);
             this.ApplyMagazinesBtnAdmin.TabIndex = 1;
             this.ApplyMagazinesBtnAdmin.Text = "Save Changes";
             this.ApplyMagazinesBtnAdmin.UseVisualStyleBackColor = true;
@@ -810,39 +1098,51 @@
             // 
             // MagazinesGrid
             // 
+            this.MagazinesGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.MagazinesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MagazinesGrid.Location = new System.Drawing.Point(12, 33);
+            this.MagazinesGrid.Location = new System.Drawing.Point(0, 19);
             this.MagazinesGrid.Name = "MagazinesGrid";
             this.MagazinesGrid.RowHeadersWidth = 51;
             this.MagazinesGrid.RowTemplate.Height = 24;
-            this.MagazinesGrid.Size = new System.Drawing.Size(455, 317);
+            this.MagazinesGrid.Size = new System.Drawing.Size(446, 301);
             this.MagazinesGrid.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.LoadUsersAdmin);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.ApplyUsersBtnAdmin);
             this.panel1.Controls.Add(this.UsersGrid);
-            this.panel1.Location = new System.Drawing.Point(13, 15);
+            this.panel1.Location = new System.Drawing.Point(15, 93);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(479, 406);
+            this.panel1.Size = new System.Drawing.Size(447, 363);
             this.panel1.TabIndex = 2;
+            // 
+            // LoadUsersAdmin
+            // 
+            this.LoadUsersAdmin.Location = new System.Drawing.Point(227, 326);
+            this.LoadUsersAdmin.Name = "LoadUsersAdmin";
+            this.LoadUsersAdmin.Size = new System.Drawing.Size(221, 37);
+            this.LoadUsersAdmin.TabIndex = 3;
+            this.LoadUsersAdmin.Text = "Load Users";
+            this.LoadUsersAdmin.UseVisualStyleBackColor = true;
+            this.LoadUsersAdmin.Click += new System.EventHandler(this.LoadUsersAdmin_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 6);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.label6.Location = new System.Drawing.Point(-3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 20);
+            this.label6.Size = new System.Drawing.Size(82, 16);
             this.label6.TabIndex = 2;
             this.label6.Text = "Users Table";
             // 
             // ApplyUsersBtnAdmin
             // 
-            this.ApplyUsersBtnAdmin.Location = new System.Drawing.Point(12, 356);
+            this.ApplyUsersBtnAdmin.Location = new System.Drawing.Point(0, 326);
             this.ApplyUsersBtnAdmin.Name = "ApplyUsersBtnAdmin";
-            this.ApplyUsersBtnAdmin.Size = new System.Drawing.Size(455, 37);
+            this.ApplyUsersBtnAdmin.Size = new System.Drawing.Size(221, 37);
             this.ApplyUsersBtnAdmin.TabIndex = 1;
             this.ApplyUsersBtnAdmin.Text = "Save Changes";
             this.ApplyUsersBtnAdmin.UseVisualStyleBackColor = true;
@@ -850,12 +1150,13 @@
             // 
             // UsersGrid
             // 
+            this.UsersGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.UsersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UsersGrid.Location = new System.Drawing.Point(12, 33);
+            this.UsersGrid.Location = new System.Drawing.Point(0, 19);
             this.UsersGrid.Name = "UsersGrid";
             this.UsersGrid.RowHeadersWidth = 51;
             this.UsersGrid.RowTemplate.Height = 24;
-            this.UsersGrid.Size = new System.Drawing.Size(455, 317);
+            this.UsersGrid.Size = new System.Drawing.Size(447, 301);
             this.UsersGrid.TabIndex = 0;
             // 
             // MainForm
@@ -885,9 +1186,17 @@
             this.LogInPanel.PerformLayout();
             this.SignUpPanel.ResumeLayout(false);
             this.SignUpPanel.PerformLayout();
-            this.DashboardTab.ResumeLayout(false);
-            this.DashboardTab.PerformLayout();
+            this.HomeTab.ResumeLayout(false);
+            this.HomeTab.PerformLayout();
+            this.MagazineOverviewPanel.ResumeLayout(false);
+            this.MagazineOverviewPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MagazineUrlImage)).EndInit();
             this.AdminTab.ResumeLayout(false);
+            this.AdminTab.PerformLayout();
+            this.magTitleFilteringPanel.ResumeLayout(false);
+            this.magTitleFilteringPanel.PerformLayout();
+            this.usernameFilteringPanel.ResumeLayout(false);
+            this.usernameFilteringPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MagazinesGrid)).EndInit();
@@ -901,7 +1210,7 @@
 
         #endregion
         private System.Windows.Forms.TabPage AuthTab;
-        private System.Windows.Forms.TabPage DashboardTab;
+        private System.Windows.Forms.TabPage HomeTab;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox PasswordBoxSignUp;
         private System.Windows.Forms.TextBox EmailBoxSignUp;
@@ -962,12 +1271,37 @@
         private System.Windows.Forms.Button OpenUpdateProfileBtn;
         private System.Windows.Forms.Button LogOutProfileBtn;
         private System.Windows.Forms.Button LogOutBtn;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label HeaderLabelHome;
+        private System.Windows.Forms.Panel Divider;
         private System.Windows.Forms.Panel ProfileTableViewer;
         private System.Windows.Forms.Panel ProfileTableEditor;
         private System.Windows.Forms.TabPage ProfileTab;
         private System.Windows.Forms.TabControl FormTabControl;
+        private System.Windows.Forms.Button OpenReportsFormBtn;
+        private System.Windows.Forms.Panel MagazineOverviewPanel;
+        private System.Windows.Forms.Button ChooseBtn;
+        private System.Windows.Forms.Button PreviousBtn;
+        private System.Windows.Forms.Button NextBtn;
+        private System.Windows.Forms.Label MagazinePriceLabel;
+        private System.Windows.Forms.Label MagazineTitleLabel;
+        private System.Windows.Forms.Label MagazineCreatedAtLabel;
+        private System.Windows.Forms.Label MagazineCategoryLabel;
+        private System.Windows.Forms.PictureBox MagazineUrlImage;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button SubscriptionReportsBtn;
+        private System.Windows.Forms.Panel magTitleFilteringPanel;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox magazineFilteringField;
+        private System.Windows.Forms.Panel usernameFilteringPanel;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox usernameFilteringField;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button LoadMagazinesAdmin;
+        private System.Windows.Forms.Button LoadUsersAdmin;
     }
 }
 

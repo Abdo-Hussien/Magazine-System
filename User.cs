@@ -11,6 +11,7 @@ namespace Magazine_System
         public string Gender { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public string role { get; set; }
 
         public User() 
         {
@@ -21,8 +22,9 @@ namespace Magazine_System
             Gender = string.Empty;
             CreatedAt = DateTime.MinValue;
             UpdatedAt = DateTime.MinValue;
+            role = "user";
         }
-        public User(int id, string name, string email, string password, string gender, DateTime createdAt, DateTime updatedAt)
+        public User(int id, string name, string email, string password, string gender, DateTime createdAt, DateTime updatedAt, string role = "user")
         {
             Id = id;
             Name = name;
@@ -31,6 +33,7 @@ namespace Magazine_System
             Gender = gender;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
+            this.role = role;
         }
 
     }

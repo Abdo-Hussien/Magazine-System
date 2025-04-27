@@ -17,14 +17,14 @@ namespace Magazine_System
 
         private readonly static string CONNECTION_STR = GetConnectionString("MainDb");
 
-        private static OracleConnection Connection { get; set; } = new OracleConnection(CONNECTION_STR);
+        public static OracleConnection Connection { get; set; } = new OracleConnection(CONNECTION_STR);
         public static OracleCommand Command { get; set; }
 
         public static OracleDataAdapter Adapter { get; set; }
         public static OracleCommandBuilder Builder { get; set; }
 
-        
-        private static string GetConnectionString(string name)
+
+        public static string GetConnectionString(string name)
         {
             var config = new ExeConfigurationFileMap();
             config.ExeConfigFilename = "db.config";
@@ -39,16 +39,22 @@ namespace Magazine_System
         }
 
 
-        private static void OpenConnection()
+        public static void OpenConnection()
         {
             try
             {
                 Connection.Open();
             }
-            catch (OracleException ex)
+            catch (Exception ex)
             {
-                throw new DatabaseException(ex.Message);
+                Console.WriteLine("General exception caught!");
+                Console.WriteLine("Message: " + ex.Message);
+                throw new DatabaseException("General error: " + ex.Message);
             }
+            //catch (OracleException ex)
+            //{
+            //    throw new DatabaseException(ex.Message);
+            //}
         }
 
         public static void CloseConnection()
@@ -109,10 +115,10 @@ namespace Magazine_System
         }
 
         // Doesn't close the connection
-        public static OracleDataReader ExecuteSelect(string Text, List<OracleParameter> Parameters = null)
+        public static OracleDataReader ExecuteSelect(string Text, List<OracleParameter> Parameters = null, CommandType commandType = CommandType.Text)
         {
             OpenConnection();
-            CreateCommand(Text, Parameters, CommandType.Text);
+            CreateCommand(Text, Parameters, commandType);
             try
             {
                 OracleDataReader dr = Command.ExecuteReader();
@@ -124,7 +130,7 @@ namespace Magazine_System
                 return null;
             }
         }
-        
+
         public static DataSet ExecuteDisconnectedMode(string Text, DataSet ds, List<OracleParameter> Parameters = null)
         {
             OpenConnection();
